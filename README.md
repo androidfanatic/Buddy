@@ -11,3 +11,13 @@ Exposes layout bounds
 Displays IP addresses and OS information.
 
 [Download](https://github.com/androidfanatic/Buddy/releases/download/1.0/app-release.apk)
+
+How to connect to ADB over WiFi?
+
+Enable WiFi adb.
+
+Make sure phone and computer are in same network
+
+Note various IP addresses listed in the app.
+
+Execute on PC terminal: adb connect <IP Address>:5555
