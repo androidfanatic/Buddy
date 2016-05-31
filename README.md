@@ -1,6 +1,6 @@
 ![Screenshot](device-2016-05-31-133608.png "Screenshot")
 
-A developer's friend.
+Buddy - a developer's friend! :)
 
 Enables wireless debugging
 
