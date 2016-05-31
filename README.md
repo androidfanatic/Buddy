@@ -10,3 +10,4 @@ Exposes layout bounds
 
 Displays IP addresses and OS information.
 
+[Download](https://github.com/androidfanatic/Buddy/releases/download/1.0/app-release.apk)
