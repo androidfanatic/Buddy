@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Buddy</string>
+    <string name="notif_id_stay_awake">1</string>
+    <string name="notif_id_adb_wireless">2</string>
+</resources>
