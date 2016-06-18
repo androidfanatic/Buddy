@@ -8,14 +8,27 @@ import manish.buddy.utils.NetworkUtil;
 import manish.buddy.utils.ShellUtil;
 import rx.Observable;
 import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 public class MainPresenter extends MvpBasePresenter<MainView> {
 
+    private CompositeSubscription subscriptions = new CompositeSubscription();
+
+    @Override public void attachView(MainView view) {
+        super.attachView(view);
+    }
+
+    @Override public void detachView(boolean retainInstance) {
+        subscriptions.unsubscribe();
+        super.detachView(retainInstance);
+    }
+
     public void toggleLayoutBounds() {
-        Observable.create(new Observable.OnSubscribe<Boolean>() {
+        Subscription subscription = Observable.create(new Observable.OnSubscribe<Boolean>() {
             @Override public void call(Subscriber<? super Boolean> subscriber) {
                 if (ShellUtil.isLayoutBound()) {
                     ShellUtil.setLayoutBound(false);
@@ -38,11 +51,13 @@ public class MainPresenter extends MvpBasePresenter<MainView> {
                         getView().recreate();
                     }
                 });
+
+        subscriptions.add(subscription);
     }
 
     public void toggleWirelessAdb() {
 
-        Observable.create(new Observable.OnSubscribe<Boolean>() {
+        Subscription subscription = Observable.create(new Observable.OnSubscribe<Boolean>() {
             @Override public void call(Subscriber<? super Boolean> subscriber) {
                 if (ShellUtil.isWirelessAdb()) {
                     ShellUtil.setWirelessAdb(false);
@@ -67,10 +82,11 @@ public class MainPresenter extends MvpBasePresenter<MainView> {
                     }
                 });
 
+        subscriptions.add(subscription);
     }
 
     public void toggleStayAwake() {
-        Observable.create(new Observable.OnSubscribe<Boolean>() {
+        Subscription subscription = Observable.create(new Observable.OnSubscribe<Boolean>() {
             @Override public void call(Subscriber<? super Boolean> subscriber) {
                 if (ShellUtil.isStayAwake()) {
                     ShellUtil.setStayAwake(false);
@@ -96,6 +112,7 @@ public class MainPresenter extends MvpBasePresenter<MainView> {
                 });
 
 
+        subscriptions.add(subscription);
     }
 
     public void stopAdbWirelessService() {

@@ -8,7 +8,7 @@ Keeps screen awake when plugged in
 
 Exposes layout bounds
 
-Displays IP addresses and OS information.
+Displays IP addresses and OS information
 
 [Download](https://github.com/androidfanatic/Buddy/releases/download/1.0/app-release.apk)
 
@@ -20,4 +20,4 @@ Make sure phone and computer are in same network
 
 Note various IP addresses listed in the app.
 
-Execute on PC terminal: adb connect <IP Address>:5555
+Run command on computer's terminal: adb connect <IP Address>:5555 to connect to adb over WiFi.

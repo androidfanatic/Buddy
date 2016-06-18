@@ -33,8 +33,8 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/tbtn_layout_bounds"
                 android:layout_toStartOf="@id/tbtn_layout_bounds"
-                android:text="Layout Bounds"
-                android:textSize="16dp"/>
+                android:text="@string/layout_bounds"
+                android:textSize="16sp"/>
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
@@ -65,8 +65,8 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/tbtn_adb_wireless"
                 android:layout_toStartOf="@id/tbtn_adb_wireless"
-                android:text="Wireless ADB"
-                android:textSize="16dp"/>
+                android:text="@string/wireless_adb"
+                android:textSize="16sp"/>
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
@@ -97,8 +97,8 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/tbtn_stay_awake"
                 android:layout_toStartOf="@id/tbtn_stay_awake"
-                android:text="Stay Awake"
-                android:textSize="16dp"/>
+                android:text="@string/stay_awake"
+                android:textSize="16sp"/>
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
@@ -121,7 +121,7 @@
                 android:id="@+id/tv_apiLevel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="API"/>
+                android:text="@string/api"/>
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -138,7 +138,7 @@
             android:layout_margin="16dp"
             android:layout_marginBottom="26dp"
             android:layout_marginTop="26dp"
-            android:text="IP Addresses"
+            android:text="@string/ip_addresses"
             />
     </android.support.v7.widget.CardView>
 </LinearLayout>
