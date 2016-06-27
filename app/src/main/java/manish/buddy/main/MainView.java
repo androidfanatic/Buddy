@@ -1,5 +1,7 @@
 package manish.buddy.main;
 
+import android.content.Context;
+
 import com.hannesdorfmann.mosby.mvp.MvpView;
 
 public interface MainView extends MvpView {
@@ -18,4 +20,6 @@ public interface MainView extends MvpView {
     void startAdbWirelessService();
 
     void setIPAddr(String[] localIpAddress);
+
+    Context getContext();
 }

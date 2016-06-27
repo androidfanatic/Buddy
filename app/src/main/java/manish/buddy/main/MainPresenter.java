@@ -1,5 +1,8 @@
 package manish.buddy.main;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 
 import manish.buddy.service.AdbWirelessService;
@@ -17,6 +20,8 @@ import rx.subscriptions.CompositeSubscription;
 public class MainPresenter extends MvpBasePresenter<MainView> {
 
     private CompositeSubscription subscriptions = new CompositeSubscription();
+    private Context context;
+    private SharedPreferences sharedPreferences;
 
     @Override public void attachView(MainView view) {
         super.attachView(view);
@@ -75,7 +80,7 @@ public class MainPresenter extends MvpBasePresenter<MainView> {
                     @Override public void call(Boolean value) {
                         if (value) {
                             getView().msg("Wireless ADB enabled.");
-                            getView().startAdbWirelessService();
+                                getView().startAdbWirelessService();
                         } else {
                             getView().msg("Wireless ADB disabled.");
                         }
@@ -104,7 +109,7 @@ public class MainPresenter extends MvpBasePresenter<MainView> {
                     @Override public void call(Boolean value) {
                         if (value) {
                             getView().msg("Stay awake enabled.");
-                            getView().startStayAwakeService();
+                                getView().startStayAwakeService();
                         } else {
                             getView().msg("Stay awake disabled.");
                         }

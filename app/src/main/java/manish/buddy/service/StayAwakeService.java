@@ -14,7 +14,6 @@ import manish.buddy.R;
 import manish.buddy.main.MainActivity;
 
 public class StayAwakeService extends Service {
-
     private static StayAwakeService stayAwakeService;
     private Notification notification;
     private NotificationManager notificationManager;
@@ -62,9 +61,13 @@ public class StayAwakeService extends Service {
     public void onDestroy() {
         super.onDestroy();
         stayAwakeService = null;
-        notificationManager.cancel(R.string.notif_id_stay_awake);
+        hideNotification();
         if (view != null) {
             windowManager.removeView(view);
         }
+    }
+
+    public void hideNotification() {
+        notificationManager.cancel(R.string.notif_id_adb_wireless);
     }
 }

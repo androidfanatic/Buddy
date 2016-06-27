@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,8 +22,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import manish.buddy.R;
+import manish.buddy.pref.PrefActivity;
 import manish.buddy.service.AdbWirelessService;
 import manish.buddy.service.StayAwakeService;
+import timber.log.Timber;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity
@@ -120,20 +125,43 @@ public class MainActivity
     }
 
     @Override public void startStayAwakeService() {
-        startService(new Intent(this, StayAwakeService.class));
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getString(R.string.show_notif_key), true)) {
+            startService(new Intent(this, StayAwakeService.class));
+        }
     }
 
     @Override public void startAdbWirelessService() {
-        startService(new Intent(this, AdbWirelessService.class));
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getString(R.string.show_notif_key), true)) {
+            startService(new Intent(this, AdbWirelessService.class));
+        }
     }
 
     @Override public void setIPAddr(String[] localIpAddress) {
         ipAddrTv.setText("IP Addresses: " + Arrays.toString(localIpAddress));
     }
 
+    @Override public Context getContext() {
+        return getApplicationContext();
+    }
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_pref:
+                Timber.d("Start karin");
+                startActivity(new Intent(this, PrefActivity.class));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }
 

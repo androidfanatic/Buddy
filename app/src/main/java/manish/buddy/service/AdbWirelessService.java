@@ -11,7 +11,7 @@ import android.support.v4.app.NotificationCompat;
 import manish.buddy.R;
 import manish.buddy.main.MainActivity;
 
-public class AdbWirelessService extends Service {
+public class AdbWirelessService extends Service{
 
     private static AdbWirelessService adbWirelessService;
     private Notification notification;
@@ -58,6 +58,10 @@ public class AdbWirelessService extends Service {
     public void onDestroy() {
         super.onDestroy();
         adbWirelessService = null;
-        notificationManager.cancel(R.string.notif_id_stay_awake);
+        hideNotification();
+    }
+
+    public void hideNotification(){
+        notificationManager.cancel(R.string.notif_id_adb_wireless);
     }
 }
