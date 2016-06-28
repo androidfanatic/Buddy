@@ -3,7 +3,6 @@ package manish.buddy.utils;
 import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
-import manish.buddy.service.StayAwakeService;
 import timber.log.Timber;
 
 public class ShellUtil {
@@ -25,10 +24,6 @@ public class ShellUtil {
     public static void setWirelessAdb(boolean mode) {
         Shell.SU.run("setprop service.adb.tcp.port " + (mode ? "5555" : "-1"));
         Shell.SU.run(new String[]{"stop adbd", "start adbd"});
-    }
-
-    public static boolean isStayAwake() {
-        return StayAwakeService.getInstance() != null;
     }
 
     public static void setStayAwake(boolean mode) {

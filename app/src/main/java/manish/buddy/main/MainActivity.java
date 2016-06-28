@@ -109,7 +109,8 @@ public class MainActivity
     }
 
     @OnClick(R.id.tbtn_stay_awake) public void toggleStayAwaje(View view) {
-        getPresenter().toggleStayAwake();
+
+        getPresenter().toggleStayAwake(((ToggleButton) findViewById(R.id.tbtn_stay_awake)).isChecked());
     }
 
     @Override public void setLayoutBoundBtn(boolean mode) {

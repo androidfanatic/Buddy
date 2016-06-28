@@ -80,7 +80,7 @@ public class MainPresenter extends MvpBasePresenter<MainView> {
                     @Override public void call(Boolean value) {
                         if (value) {
                             getView().msg("Wireless ADB enabled.");
-                                getView().startAdbWirelessService();
+                            getView().startAdbWirelessService();
                         } else {
                             getView().msg("Wireless ADB disabled.");
                         }
@@ -90,10 +90,10 @@ public class MainPresenter extends MvpBasePresenter<MainView> {
         subscriptions.add(subscription);
     }
 
-    public void toggleStayAwake() {
+    public void toggleStayAwake(final boolean mode) {
         Subscription subscription = Observable.create(new Observable.OnSubscribe<Boolean>() {
             @Override public void call(Subscriber<? super Boolean> subscriber) {
-                if (ShellUtil.isStayAwake()) {
+                if (!mode) {
                     ShellUtil.setStayAwake(false);
                     stopStayAwakeService();
                     subscriber.onNext(false);
@@ -109,7 +109,7 @@ public class MainPresenter extends MvpBasePresenter<MainView> {
                     @Override public void call(Boolean value) {
                         if (value) {
                             getView().msg("Stay awake enabled.");
-                                getView().startStayAwakeService();
+                            getView().startStayAwakeService();
                         } else {
                             getView().msg("Stay awake disabled.");
                         }
