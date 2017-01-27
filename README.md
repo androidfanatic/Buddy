@@ -16,8 +16,8 @@ How to connect to ADB over WiFi?
 
 Enable WiFi adb.
 
-Make sure phone and computer are in same network
+Make sure phone and computer are on the same network
 
 Note various IP addresses listed in the app.
 
-Run command on computer's terminal: adb connect <IP Address>:5555 to connect to adb over WiFi.
+Execute this command on computer's terminal: adb connect <IP Address>:5555 to connect to adb over WiFi.
